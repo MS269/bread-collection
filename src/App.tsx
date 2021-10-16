@@ -1,5 +1,6 @@
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Header from "./components/Header";
 import routes from "./routes";
 import Admin from "./screens/Admin";
 import Bakery from "./screens/Bakery";
@@ -12,6 +13,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <Router>
+        <Header />
         <Switch>
           <Route path={routes.home} exact>
             <Home />
