@@ -6,6 +6,7 @@ import Bakery from "./screens/Bakery";
 import Chat from "./screens/Chat";
 import Home from "./screens/Home";
 import Manual from "./screens/Manual";
+import NotFound from "./screens/NotFound";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
           <Route path={routes.manual} exact>
             <Manual />
           </Route>
+          <NotFound />
         </Switch>
       </Router>
     </HelmetProvider>
