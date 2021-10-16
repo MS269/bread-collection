@@ -10,9 +10,6 @@ export default function Header() {
             <Link to={routes.home}>Home</Link>
           </li>
           <li>
-            <Link to={routes.admin}>Admin</Link>
-          </li>
-          <li>
             <Link to={routes.bakery}>Bakery</Link>
           </li>
           <li>
@@ -20,6 +17,9 @@ export default function Header() {
           </li>
           <li>
             <Link to={routes.manual}>Manual</Link>
+          </li>
+          <li>
+            <Link to={routes.admin}>Admin</Link>
           </li>
         </ul>
       </nav>

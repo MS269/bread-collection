@@ -11,5 +11,6 @@ declare namespace NodeJS {
     readonly REACT_APP_MESSAGING_SENDER_ID: string;
     readonly REACT_APP_APP_ID: string;
     readonly REACT_APP_MEASUREMENT_ID: string;
+    readonly REACT_APP_ADMIN_PASSWORD: string;
   }
 }

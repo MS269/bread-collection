@@ -12,7 +12,7 @@ This web helps to collect bread
 
 ## Admin
 
-- [ ] Login with simple password
+- [x] Login with simple password
 - [ ] Show checkVisit bakery
 - [ ] Notify needVisit bakery
 - [ ] Show needCert bakery only
