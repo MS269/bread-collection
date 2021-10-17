@@ -20,14 +20,14 @@ export default function Admin() {
       {isLoggedIn ? (
         "Logged In"
       ) : (
-        <form>
+        <div>
           <input
             type="password"
             placeholder="비밀번호를 입력해주세요"
             onChange={(event) => setNewPassword(event.target.value)}
           />
           <button onClick={login}>로그인</button>
-        </form>
+        </div>
       )}
     </div>
   );
