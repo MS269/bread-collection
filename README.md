@@ -40,4 +40,4 @@ This web helps to collect bread
 
 ## Chat
 
-- [ ] Chat with given nickname
+- [x] Chat with nickname
