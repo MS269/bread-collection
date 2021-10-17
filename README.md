@@ -27,7 +27,7 @@ This web helps to collect bread
 
 ## Bakery
 
-- [ ] Show all bakery list
+- [x] Show all bakery list
 - [ ] Blur no needVisit bakery
 - [ ] Notify needCert bakery
 - [ ] Notify visited bakery
