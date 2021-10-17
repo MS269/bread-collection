@@ -23,7 +23,7 @@ This web helps to collect bread
 ## Home
 
 - [x] Show checkVisit bakery only
-- [ ] Blur no needVisit bakery
+- [x] Blur no needVisit bakery
 
 ## Bakery
 

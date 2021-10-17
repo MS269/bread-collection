@@ -28,7 +28,13 @@ export default function Home() {
       <ul>
         {bakeries.map((bakery) => (
           <li key={bakery.id}>
-            <span>
+            <span
+              style={
+                bakery.needVisit
+                  ? {}
+                  : { opacity: 0.5, textDecoration: "line-through" }
+              }
+            >
               {bakery.area} - {bakery.name}
             </span>
           </li>
