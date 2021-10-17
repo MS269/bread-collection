@@ -1,5 +1,6 @@
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import routes from "./routes";
 import Admin from "./screens/Admin";
@@ -32,6 +33,7 @@ export default function App() {
           </Route>
           <NotFound />
         </Switch>
+        <Footer />
       </Router>
     </HelmetProvider>
   );
