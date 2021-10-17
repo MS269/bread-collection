@@ -1,10 +1,22 @@
-import { collection, DocumentData, onSnapshot } from "@firebase/firestore";
+import {
+  collection,
+  doc,
+  DocumentData,
+  onSnapshot,
+  updateDoc,
+} from "@firebase/firestore";
 import { useEffect, useState } from "react";
 import PageTitle from "../components/PageTitle";
 import { db } from "../firebase";
 
 export default function Bakery() {
   const [bakeries, setBakeries] = useState<DocumentData[]>([]);
+
+  const switchVisit = (id: string, visited: boolean) =>
+    updateDoc(doc(db, "bakeries", id), { visited: !visited });
+
+  const switchNeedCert = (id: string, needCert: boolean) =>
+    updateDoc(doc(db, "bakeries", id), { needCert: !needCert });
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "bakeries"), (snapshot) =>
@@ -29,6 +41,12 @@ export default function Bakery() {
             >
               {bakery.area} - {bakery.name}
             </span>
+            <button onClick={() => switchVisit(bakery.id, bakery.visited)}>
+              방문{bakery.visited ? "⭕" : "❌"}
+            </button>
+            <button onClick={() => switchNeedCert(bakery.id, bakery.needCert)}>
+              인수확인증필요{bakery.needCert ? "⭕" : "❌"}
+            </button>
           </li>
         ))}
       </ul>
