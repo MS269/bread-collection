@@ -43,7 +43,7 @@ export default function Chat() {
         <input
           type="text"
           placeholder="닉네임"
-          value="봉사자"
+          value={newAuthor}
           onChange={(event) => setNewAuthor(event.target.value)}
         />
         <input
