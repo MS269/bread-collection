@@ -14,7 +14,7 @@ export default function Admin() {
   };
 
   return (
-    <div>
+    <main>
       <PageTitle title={"관리자"} />
       <h1>Admin</h1>
       {isLoggedIn ? (
@@ -29,6 +29,6 @@ export default function Admin() {
           <button onClick={login}>로그인</button>
         </div>
       )}
-    </div>
+    </main>
   );
 }

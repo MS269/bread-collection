@@ -22,7 +22,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <main>
       <PageTitle title={"홈"} />
       <h1>Home</h1>
       <ul>
@@ -40,6 +40,6 @@ export default function Home() {
           </li>
         ))}
       </ul>
-    </div>
+    </main>
   );
 }

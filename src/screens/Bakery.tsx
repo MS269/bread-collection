@@ -26,7 +26,7 @@ export default function Bakery() {
   }, []);
 
   return (
-    <div>
+    <main>
       <PageTitle title={"빵집"} />
       <h1>Bakery</h1>
       <ul>
@@ -50,6 +50,6 @@ export default function Bakery() {
           </li>
         ))}
       </ul>
-    </div>
+    </main>
   );
 }

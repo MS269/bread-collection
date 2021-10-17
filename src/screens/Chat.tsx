@@ -33,7 +33,7 @@ export default function Chat() {
   }, []);
 
   return (
-    <div>
+    <main>
       <PageTitle title={"채팅"} />
       <h1>Chat</h1>
       <ul>
@@ -60,6 +60,6 @@ export default function Chat() {
         />
         <button onClick={sendMessage}>전송</button>
       </div>
-    </div>
+    </main>
   );
 }
