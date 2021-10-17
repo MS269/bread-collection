@@ -1,6 +1,8 @@
 import {
   addDoc,
   collection,
+  deleteDoc,
+  doc,
   DocumentData,
   onSnapshot,
 } from "@firebase/firestore";
@@ -21,6 +23,8 @@ export default function Chat() {
     setNewMessage("");
   };
 
+  const deleteMessage = (id: string) => deleteDoc(doc(db, "chat", id));
+
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "chat"), (snapshot) =>
       setMessages(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
@@ -35,7 +39,10 @@ export default function Chat() {
       <ul>
         {messages.map((message) => (
           <li key={message.id}>
-            {message.author} - {message.payload}
+            <span>
+              {message.author} - {message.payload}
+            </span>
+            <button onClick={() => deleteMessage(message.id)}>❌</button>
           </li>
         ))}
       </ul>
