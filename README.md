@@ -13,11 +13,11 @@ This web helps to collect bread
 ## Admin
 
 - [x] Login with simple password
-- [ ] Show checkVisit bakery
+- [ ] Show checkVisit bakery only
 - [ ] Notify needVisit bakery
 - [ ] Show needCert bakery only
-- [ ] Initialize needVisit and needCert
-- [ ] Show visited bakery
+- [ ] Initialize visited, needVisit and needCert
+- [ ] Show visited bakery only
 - [ ] Initialize all chats
 
 ## Home
