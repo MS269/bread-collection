@@ -56,6 +56,7 @@ export default function Chat() {
         <input
           type="text"
           placeholder="메세지"
+          value={newMessage}
           onChange={(event) => setNewMessage(event.target.value)}
         />
         <button onClick={sendMessage}>전송</button>
