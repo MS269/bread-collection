@@ -88,7 +88,16 @@ export default function Admin() {
                 type="checkbox"
                 id="checkVisit"
                 checked={newCheckVisit}
-                onChange={() => setNewCheckVisit(!newCheckVisit)}
+                onChange={() => {
+                  setNewCheckVisit(!newCheckVisit);
+                  setNewVisitDays({
+                    mon: false,
+                    tue: false,
+                    wed: false,
+                    thu: false,
+                    fri: false,
+                  });
+                }}
               />
               <label htmlFor="checkVisit">방문확인필요</label>
             </div>
