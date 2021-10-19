@@ -57,12 +57,14 @@ export default function Chat() {
           placeholder="닉네임"
           value={newAuthor}
           onChange={(event) => setNewAuthor(event.target.value)}
+          required
         />
         <input
           type="text"
           placeholder="메세지"
           value={newMessage}
           onChange={(event) => setNewMessage(event.target.value)}
+          required
         />
         <button onClick={sendMessage}>전송</button>
       </div>
