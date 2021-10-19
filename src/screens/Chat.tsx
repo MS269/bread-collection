@@ -5,6 +5,8 @@ import {
   doc,
   DocumentData,
   onSnapshot,
+  orderBy,
+  query,
 } from "@firebase/firestore";
 import { useEffect, useState } from "react";
 import PageTitle from "../components/PageTitle";
@@ -19,6 +21,7 @@ export default function Chat() {
     addDoc(collection(db, "chat"), {
       author: newAuthor,
       payload: newMessage,
+      createdAt: Date.now(),
     });
     setNewMessage("");
   };
@@ -26,8 +29,10 @@ export default function Chat() {
   const deleteMessage = (id: string) => deleteDoc(doc(db, "chat", id));
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(collection(db, "chat"), (snapshot) =>
-      setMessages(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    const unsubscribe = onSnapshot(
+      query(collection(db, "chat"), orderBy("createdAt", "asc")),
+      (snapshot) =>
+        setMessages(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     );
     return unsubscribe;
   }, []);
