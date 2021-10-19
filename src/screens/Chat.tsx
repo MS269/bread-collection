@@ -9,6 +9,7 @@ import {
   query,
 } from "@firebase/firestore";
 import { useEffect, useState } from "react";
+import Layout from "../components/Layout";
 import PageTitle from "../components/PageTitle";
 import { db } from "../firebase";
 
@@ -38,7 +39,7 @@ export default function Chat() {
   }, []);
 
   return (
-    <main>
+    <Layout>
       <PageTitle title={"채팅"} />
       <h1>Chat</h1>
       <ul>
@@ -68,6 +69,6 @@ export default function Chat() {
         />
         <button onClick={sendMessage}>전송</button>
       </div>
-    </main>
+    </Layout>
   );
 }

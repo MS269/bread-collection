@@ -6,6 +6,7 @@ import {
   updateDoc,
 } from "@firebase/firestore";
 import { useEffect, useState } from "react";
+import Layout from "../components/Layout";
 import PageTitle from "../components/PageTitle";
 import { db } from "../firebase";
 
@@ -26,7 +27,7 @@ export default function Bakery() {
   }, []);
 
   return (
-    <main>
+    <Layout>
       <PageTitle title={"빵집"} />
       <h1>Bakery</h1>
       <ul>
@@ -50,6 +51,6 @@ export default function Bakery() {
           </li>
         ))}
       </ul>
-    </main>
+    </Layout>
   );
 }

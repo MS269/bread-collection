@@ -1,5 +1,6 @@
 import { addDoc, collection } from "@firebase/firestore";
 import { useState } from "react";
+import Layout from "../components/Layout";
 import PageTitle from "../components/PageTitle";
 import { db } from "../firebase";
 
@@ -56,7 +57,7 @@ export default function Admin() {
   };
 
   return (
-    <main>
+    <Layout>
       <PageTitle title={"관리자"} />
       <h1>Admin</h1>
       {isLoggedIn ? (
@@ -178,6 +179,6 @@ export default function Admin() {
           <button onClick={login}>로그인</button>
         </div>
       )}
-    </main>
+    </Layout>
   );
 }

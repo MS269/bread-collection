@@ -6,6 +6,7 @@ import {
   where,
 } from "@firebase/firestore";
 import { useEffect, useState } from "react";
+import Layout from "../components/Layout";
 import PageTitle from "../components/PageTitle";
 import { db } from "../firebase";
 
@@ -22,7 +23,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main>
+    <Layout>
       <PageTitle title={"홈"} />
       <h1>Home</h1>
       <ul>
@@ -40,6 +41,6 @@ export default function Home() {
           </li>
         ))}
       </ul>
-    </main>
+    </Layout>
   );
 }
