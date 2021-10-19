@@ -9,34 +9,27 @@ export default function Admin() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [newName, setNewName] = useState("");
   const [newArea, setNewArea] = useState("");
-  const [newVistDays, setNewVisitDays] = useState({
+  const [newVisitDays, setNewVisitDays] = useState({
     mon: true,
     tue: true,
     wed: true,
     thu: true,
     fri: true,
-    sat: true,
-    sun: true,
   });
   const [newCheckVisit, setNewCheckVisit] = useState(false);
   const [newEtc, setNewEtc] = useState("");
-
   const [newPassword, setNewPassword] = useState("");
 
   const addBakery = () => {
+    if (newName === "" || newArea === "") {
+      return;
+    }
     addDoc(collection(db, "bakeries"), {
       name: newName,
       area: newArea,
       checkVisit: newCheckVisit,
-      visitDays: {
-        mon: true,
-        tue: true,
-        wed: true,
-        thu: true,
-        fri: true,
-        sat: true,
-        sun: true,
-      },
+      visitDays: newVisitDays,
+      visitOrder: 0,
       needVisit: false,
       needCert: false,
       visited: false,
@@ -49,13 +42,14 @@ export default function Admin() {
       wed: true,
       thu: true,
       fri: true,
-      sat: true,
-      sun: true,
     });
     setNewCheckVisit(false);
   };
 
   const login = () => {
+    if (newPassword === "") {
+      return;
+    }
     if (newPassword === PASSWORD) {
       setIsLoggedIn(true);
     }
@@ -74,15 +68,21 @@ export default function Admin() {
               placeholder="이름"
               value={newName}
               onChange={(event) => setNewName(event.target.value)}
-              required
             />
-            <input
-              type="text"
-              placeholder="위치"
+            <select
               value={newArea}
               onChange={(event) => setNewArea(event.target.value)}
-              required
-            />
+            >
+              <option value="">-- 위치 --</option>
+              <option value="걸포동">- 걸포동 -</option>
+              <option value="saudong">- 사우동 -</option>
+              <option value="pungmudong">- 풍무동 -</option>
+              <option value="gochoneup">- 고촌읍 -</option>
+              <option value="unyangdong">- 운양동 -</option>
+              <option value="janggidong">- 장기동 -</option>
+              <option value="masandong">- 마산동 -</option>
+              <option value="guraedong">- 구래동 -</option>
+            </select>
             <div>
               <input
                 type="checkbox"
@@ -92,15 +92,15 @@ export default function Admin() {
               />
               <label htmlFor="checkVisit">방문확인필요</label>
             </div>
-            <fieldset>
+            <fieldset disabled={!newCheckVisit}>
               <legend>수거요일</legend>
               <div>
                 <input
                   type="checkbox"
                   id="mon"
-                  checked={newVistDays.mon}
+                  checked={newVisitDays.mon}
                   onChange={() =>
-                    setNewVisitDays({ ...newVistDays, mon: !newVistDays.mon })
+                    setNewVisitDays({ ...newVisitDays, mon: !newVisitDays.mon })
                   }
                 />
                 <label htmlFor="mon">월요일</label>
@@ -109,9 +109,9 @@ export default function Admin() {
                 <input
                   type="checkbox"
                   id="tue"
-                  checked={newVistDays.tue}
+                  checked={newVisitDays.tue}
                   onChange={() =>
-                    setNewVisitDays({ ...newVistDays, tue: !newVistDays.tue })
+                    setNewVisitDays({ ...newVisitDays, tue: !newVisitDays.tue })
                   }
                 />
                 <label htmlFor="tue">화요일</label>
@@ -120,9 +120,9 @@ export default function Admin() {
                 <input
                   type="checkbox"
                   id="wed"
-                  checked={newVistDays.wed}
+                  checked={newVisitDays.wed}
                   onChange={() =>
-                    setNewVisitDays({ ...newVistDays, wed: !newVistDays.wed })
+                    setNewVisitDays({ ...newVisitDays, wed: !newVisitDays.wed })
                   }
                 />
                 <label htmlFor="wed">수요일</label>
@@ -131,9 +131,9 @@ export default function Admin() {
                 <input
                   type="checkbox"
                   id="thu"
-                  checked={newVistDays.thu}
+                  checked={newVisitDays.thu}
                   onChange={() =>
-                    setNewVisitDays({ ...newVistDays, thu: !newVistDays.thu })
+                    setNewVisitDays({ ...newVisitDays, thu: !newVisitDays.thu })
                   }
                 />
                 <label htmlFor="thu">목요일</label>
@@ -142,34 +142,12 @@ export default function Admin() {
                 <input
                   type="checkbox"
                   id="fri"
-                  checked={newVistDays.fri}
+                  checked={newVisitDays.fri}
                   onChange={() =>
-                    setNewVisitDays({ ...newVistDays, fri: !newVistDays.fri })
+                    setNewVisitDays({ ...newVisitDays, fri: !newVisitDays.fri })
                   }
                 />
                 <label htmlFor="fri">금요일</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  id="sat"
-                  checked={newVistDays.sat}
-                  onChange={() =>
-                    setNewVisitDays({ ...newVistDays, sat: !newVistDays.sat })
-                  }
-                />
-                <label htmlFor="sat">토요일</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  id="sun"
-                  checked={newVistDays.sun}
-                  onChange={() =>
-                    setNewVisitDays({ ...newVistDays, sun: !newVistDays.sun })
-                  }
-                />
-                <label htmlFor="sun">일요일</label>
               </div>
             </fieldset>
             <input
