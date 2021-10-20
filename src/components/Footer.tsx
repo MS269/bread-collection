@@ -51,7 +51,7 @@ export default function Footer() {
         <TeleContainer>
           <TeleName>푸드뱅크</TeleName>
           <FontAwesomeIcon icon={faPhone} size="sm" />
-          <TeleNum>031-983-1377</TeleNum>
+          <TeleNum>031-996-1377</TeleNum>
         </TeleContainer>
         <Dday>소집해제 D-{dDay}</Dday>
       </Wrapper>
