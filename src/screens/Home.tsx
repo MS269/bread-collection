@@ -6,9 +6,17 @@ import {
   where,
 } from "@firebase/firestore";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 import Layout from "../components/Layout";
 import PageTitle from "../components/PageTitle";
 import { db } from "../firebase";
+
+const BakeryContainer = styled.ul``;
+
+const Bakery = styled.li<{ needVisit: boolean }>`
+  text-decoration: ${(props) => (props.needVisit ? "none" : "line-through")};
+  opacity: ${(props) => (props.needVisit ? "1" : "0.5")};
+`;
 
 export default function Home() {
   const [bakeries, setBakeries] = useState<DocumentData[]>([]);
@@ -25,22 +33,13 @@ export default function Home() {
   return (
     <Layout>
       <PageTitle title={"홈"} />
-      <h1>Home</h1>
-      <ul>
+      <BakeryContainer>
         {bakeries.map((bakery) => (
-          <li key={bakery.id}>
-            <span
-              style={
-                bakery.needVisit
-                  ? {}
-                  : { opacity: 0.5, textDecoration: "line-through" }
-              }
-            >
-              {bakery.area} - {bakery.name}
-            </span>
-          </li>
+          <Bakery key={bakery.id} needVisit={bakery.needVisit}>
+            {bakery.area} - {bakery.name}
+          </Bakery>
         ))}
-      </ul>
+      </BakeryContainer>
     </Layout>
   );
 }
