@@ -7,7 +7,7 @@ import {
   faUnlock,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import routes from "../routes";
 
@@ -35,8 +35,9 @@ const IconContainer = styled.ul`
   align-items: center;
 `;
 
-const Icon = styled.li`
+const Icon = styled.li<{ blur: boolean }>`
   margin: 0px 15px;
+  opacity: ${(props) => (props.blur ? "0.5" : "1")};
 `;
 
 const Container = styled.div`
@@ -47,13 +48,14 @@ const Container = styled.div`
 `;
 
 export default function Header() {
+  const location = useLocation();
   const isLoggedIn = false;
 
   return (
     <SHeader>
       <Wrapper>
         <IconContainer>
-          <Icon>
+          <Icon blur={location.pathname === routes.home}>
             <Link to={routes.home}>
               <Container>
                 <FontAwesomeIcon icon={faHome} size="2x" />
@@ -61,7 +63,7 @@ export default function Header() {
               </Container>
             </Link>
           </Icon>
-          <Icon>
+          <Icon blur={location.pathname === routes.bakery}>
             <Link to={routes.bakery}>
               <Container>
                 <FontAwesomeIcon icon={faBreadSlice} size="2x" />
@@ -69,7 +71,7 @@ export default function Header() {
               </Container>
             </Link>
           </Icon>
-          <Icon>
+          <Icon blur={location.pathname === routes.chat}>
             <Link to={routes.chat}>
               <Container>
                 <FontAwesomeIcon icon={faPaperPlane} size="2x" />
@@ -77,7 +79,7 @@ export default function Header() {
               </Container>
             </Link>
           </Icon>
-          <Icon>
+          <Icon blur={location.pathname === routes.manual}>
             <Link to={routes.manual}>
               <Container>
                 <FontAwesomeIcon icon={faStickyNote} size="2x" />
@@ -87,7 +89,7 @@ export default function Header() {
           </Icon>
         </IconContainer>
         <IconContainer>
-          <Icon>
+          <Icon blur={location.pathname === routes.admin}>
             <Link to={routes.admin}>
               <Container>
                 <FontAwesomeIcon
