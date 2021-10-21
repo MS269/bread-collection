@@ -9,6 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { LoginContext } from "../contexts/login";
 import routes from "../routes";
 
 const SHeader = styled.header`
@@ -49,7 +50,6 @@ const Container = styled.div`
 
 export default function Header() {
   const location = useLocation();
-  const isLoggedIn = false;
 
   return (
     <SHeader>
@@ -92,10 +92,14 @@ export default function Header() {
           <Icon blur={location.pathname === routes.admin}>
             <Link to={routes.admin}>
               <Container>
-                <FontAwesomeIcon
-                  icon={isLoggedIn ? faUnlock : faLock}
-                  size="2x"
-                />
+                <LoginContext.Consumer>
+                  {({ isLoggedIn }) => (
+                    <FontAwesomeIcon
+                      icon={isLoggedIn ? faUnlock : faLock}
+                      size="2x"
+                    />
+                  )}
+                </LoginContext.Consumer>
                 <span>관리자</span>
               </Container>
             </Link>

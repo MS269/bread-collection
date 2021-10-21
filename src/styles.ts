@@ -5,6 +5,7 @@ export const theme = {
   bgColor: "rgb(250, 250, 250)",
   borderColor: "rgb(219, 219, 219)",
   fontColor: "rgb(38, 38, 38)",
+  blue: "rgb(0, 149, 246)",
 };
 
 export const GlobalStyles = createGlobalStyle`

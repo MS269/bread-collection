@@ -1,9 +1,9 @@
 const routes: { [key: string]: string } = {
   home: "/",
-  admin: "/admin",
   bakery: "/bakery",
   chat: "/chat",
   manual: "/manual",
+  admin: "/admin",
 };
 
 export default routes;

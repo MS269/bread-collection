@@ -5,5 +5,6 @@ declare module "styled-components" {
     bgColor: string;
     borderColor: string;
     fontColor: string;
+    blue: string;
   }
 }
