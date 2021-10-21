@@ -3,10 +3,6 @@ import styled from "styled-components";
 import Footer from "./Footer";
 import Header from "./Header";
 
-interface ILayoutProps {
-  children: React.ReactNode;
-}
-
 const Content = styled.main`
   display: flex;
   justify-content: center;
@@ -19,7 +15,7 @@ const Content = styled.main`
   border: solid 1px ${(props) => props.theme.borderColor};
 `;
 
-function Layout({ children }: ILayoutProps) {
+function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Header />
