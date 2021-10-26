@@ -1,4 +1,6 @@
+import { addDoc, collection } from "@firebase/firestore";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { db } from "../../firebase";
 
 interface IAddBakeryData {
   name: string;
@@ -9,9 +11,31 @@ interface IAddBakeryData {
 }
 
 export default function AddBakery() {
-  const { handleSubmit, register } = useForm<IAddBakeryData>();
-  const onSubmit: SubmitHandler<IAddBakeryData> = (data) => {
-    console.log(data);
+  const { handleSubmit, register, setValue } = useForm<IAddBakeryData>();
+  const onSubmit: SubmitHandler<IAddBakeryData> = ({
+    name,
+    area,
+    checkVisit,
+    visitDays,
+    etc,
+  }) => {
+    const bakery = {
+      name,
+      area,
+      checkVisit,
+      visitDays,
+      etc,
+      visitOrder: 0,
+      needVisit: false,
+      needCert: false,
+      visited: false,
+    };
+    addDoc(collection(db, "bakeries"), bakery);
+    setValue("name", "");
+    setValue("area", "");
+    setValue("checkVisit", false);
+    setValue("visitDays", [false, false, false, false, false]);
+    setValue("etc", "");
   };
 
   return (
@@ -25,7 +49,6 @@ export default function AddBakery() {
         />
         <select {...register("area", { required: true })}>
           <option value="">-- 위치 --</option>
-          <option value="걸포동">- 걸포동 -</option>
           <option value="걸포동">- 걸포동 -</option>
           <option value="사우동">- 사우동 -</option>
           <option value="풍무동">- 풍무동 -</option>
