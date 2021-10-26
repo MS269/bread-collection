@@ -5,7 +5,7 @@ import { LoginContext } from "../contexts/login";
 
 const PASSWORD: string = process.env.REACT_APP_ADMIN_PASSWORD;
 
-interface ILoginInputs {
+interface ILoginData {
   password: string;
 }
 
@@ -30,7 +30,7 @@ const SubmitButton = styled.input`
 `;
 
 export default function Login() {
-  const { handleSubmit, register } = useForm<ILoginInputs>({
+  const { handleSubmit, register } = useForm<ILoginData>({
     mode: "onChange",
   });
 
@@ -38,7 +38,7 @@ export default function Login() {
     <Layout>
       <LoginContext.Consumer>
         {({ login }) => {
-          const onSubmit: SubmitHandler<ILoginInputs> = ({ password }) => {
+          const onSubmit: SubmitHandler<ILoginData> = ({ password }) => {
             if (password === PASSWORD) {
               login();
             }
