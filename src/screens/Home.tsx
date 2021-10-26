@@ -2,6 +2,7 @@ import {
   collection,
   DocumentData,
   onSnapshot,
+  orderBy,
   query,
   where,
 } from "@firebase/firestore";
@@ -23,7 +24,11 @@ export default function Home() {
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
-      query(collection(db, "bakeries"), where("checkVisit", "==", true)),
+      query(
+        collection(db, "bakeries"),
+        where("checkVisit", "==", true),
+        orderBy("visitOrder")
+      ),
       (snapshot) =>
         setBakeries(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     );
