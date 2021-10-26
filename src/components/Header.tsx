@@ -63,6 +63,8 @@ export default function Header() {
               </Container>
             </Link>
           </Icon>
+        </IconContainer>
+        <IconContainer>
           <Icon blur={location.pathname === routes.bakery}>
             <Link to={routes.bakery}>
               <Container>
