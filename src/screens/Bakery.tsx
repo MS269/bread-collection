@@ -29,7 +29,6 @@ export default function Bakery() {
   return (
     <Layout>
       <PageTitle title={"빵집"} />
-      <h1>Bakery</h1>
       <ul>
         {bakeries.map((bakery) => (
           <li key={bakery.id}>

@@ -41,7 +41,6 @@ export default function Chat() {
   return (
     <Layout>
       <PageTitle title={"채팅"} />
-      <h1>Chat</h1>
       <ul>
         {messages.map((message) => (
           <li key={message.id}>
