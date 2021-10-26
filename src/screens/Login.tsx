@@ -1,11 +1,11 @@
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import styled from "styled-components";
 import Layout from "../components/Layout";
 import { LoginContext } from "../contexts/login";
 
 const PASSWORD: string = process.env.REACT_APP_ADMIN_PASSWORD;
 
-interface ILoginInput {
+interface ILoginInputs {
   password: string;
 }
 
@@ -30,20 +30,22 @@ const SubmitButton = styled.input`
 `;
 
 export default function Login() {
-  const { handleSubmit, register } = useForm<ILoginInput>({ mode: "onChange" });
+  const { handleSubmit, register } = useForm<ILoginInputs>({
+    mode: "onChange",
+  });
 
   return (
     <Layout>
       <LoginContext.Consumer>
         {({ login }) => {
-          const onSubmit = handleSubmit(({ password }) => {
+          const onSubmit: SubmitHandler<ILoginInputs> = ({ password }) => {
             if (password === PASSWORD) {
               login();
             }
-          });
+          };
 
           return (
-            <LoginForm onSubmit={onSubmit}>
+            <LoginForm onSubmit={handleSubmit(onSubmit)}>
               <PasswordInput
                 type="password"
                 placeholder="비밀번호를 입력해주세요"
