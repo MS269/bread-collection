@@ -61,13 +61,13 @@ export default function Admin() {
           >
             <option value="">-- 위치 --</option>
             <option value="걸포동">- 걸포동 -</option>
-            <option value="saudong">- 사우동 -</option>
-            <option value="pungmudong">- 풍무동 -</option>
-            <option value="gochoneup">- 고촌읍 -</option>
-            <option value="unyangdong">- 운양동 -</option>
-            <option value="janggidong">- 장기동 -</option>
-            <option value="masandong">- 마산동 -</option>
-            <option value="guraedong">- 구래동 -</option>
+            <option value="사우동">- 사우동 -</option>
+            <option value="풍무동">- 풍무동 -</option>
+            <option value="고촌읍">- 고촌읍 -</option>
+            <option value="운양동">- 운양동 -</option>
+            <option value="장기동">- 장기동 -</option>
+            <option value="마산동">- 마산동 -</option>
+            <option value="구래동">- 구래동 -</option>
           </select>
           <div>
             <input
