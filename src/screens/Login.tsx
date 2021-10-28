@@ -27,6 +27,7 @@ const SubmitButton = styled.input`
   padding: 11px;
   border-radius: 4px;
   color: white;
+  cursor: pointer;
 `;
 
 export default function Login() {
