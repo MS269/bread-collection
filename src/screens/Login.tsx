@@ -20,6 +20,7 @@ const PasswordInput = styled.input`
   margin-right: 10px;
   padding: 8px;
   border: solid 1px ${(props) => props.theme.borderColor};
+  border-radius: 4px;
 `;
 
 const SubmitButton = styled.input`
