@@ -1,6 +1,4 @@
 import { addDoc, collection } from "@firebase/firestore";
-import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SubmitHandler, useForm } from "react-hook-form";
 import styled from "styled-components";
 import { db } from "../../firebase";
@@ -34,8 +32,11 @@ const PayloadInput = styled.input`
   margin: 0px 5px;
 `;
 
-const SendButton = styled.button`
+const SendButton = styled.input`
+  width: 65px;
   margin-right: 10px;
+  color: ${(props) => props.theme.blue};
+  font-weight: 600;
   cursor: pointer;
 `;
 
@@ -64,9 +65,7 @@ export default function SendMessage() {
         placeholder="메시지 보내기..."
         {...register("payload", { required: true })}
       />
-      <SendButton>
-        <FontAwesomeIcon icon={faPaperPlane} size="lg" />
-      </SendButton>
+      <SendButton type="submit" value="보내기" />
     </SendMessageForm>
   );
 }
