@@ -15,24 +15,27 @@ const SendMessageForm = styled.form`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 3px;
+  height: 30px;
   border: solid 1px ${(props) => props.theme.borderColor};
-  border-radius: 4px;
+  border-radius: 15px;
 `;
 
 const AuthorInput = styled.input`
   width: 50px;
+  height: 20px;
+  margin-left: 4px;
   border: solid 1px ${(props) => props.theme.borderColor};
-  border-radius: 4px;
+  border-radius: 10px;
   text-align: center;
 `;
 
 const PayloadInput = styled.input`
   width: 100%;
-  padding: 0px 5px;
+  margin: 0px 5px;
 `;
 
 const SendButton = styled.button`
+  margin-right: 10px;
   cursor: pointer;
 `;
 
