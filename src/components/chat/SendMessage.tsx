@@ -1,6 +1,7 @@
 import { addDoc, collection } from "@firebase/firestore";
 import { SubmitHandler, useForm } from "react-hook-form";
 import styled from "styled-components";
+import { LoginContext } from "../../contexts/login";
 import { db } from "../../firebase";
 
 interface ISendMesssageData {
@@ -54,12 +55,17 @@ export default function SendMessage() {
 
   return (
     <SendMessageForm onSubmit={handleSubmit(onSubmit)}>
-      <AuthorInput
-        type="text"
-        placeholder="닉네임"
-        defaultValue="봉사자"
-        {...register("author", { required: true })}
-      />
+      <LoginContext.Consumer>
+        {({ isLoggedIn }) => (
+          <AuthorInput
+            type="text"
+            placeholder="닉네임"
+            defaultValue={isLoggedIn ? "관리자" : "봉사자"}
+            disabled={!isLoggedIn}
+            {...register("author", { required: true })}
+          />
+        )}
+      </LoginContext.Consumer>
       <PayloadInput
         type="text"
         placeholder="메시지 보내기..."
