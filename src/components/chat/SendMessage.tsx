@@ -1,37 +1,69 @@
 import { addDoc, collection } from "@firebase/firestore";
+import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SubmitHandler, useForm } from "react-hook-form";
+import styled from "styled-components";
 import { db } from "../../firebase";
 
 interface ISendMesssageData {
-  nickname: string;
+  author: string;
   payload: string;
 }
 
+const SendMessageForm = styled.form`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 3px;
+  border: solid 1px ${(props) => props.theme.borderColor};
+  border-radius: 4px;
+`;
+
+const AuthorInput = styled.input`
+  width: 50px;
+  border: solid 1px ${(props) => props.theme.borderColor};
+  border-radius: 4px;
+  text-align: center;
+`;
+
+const PayloadInput = styled.input`
+  width: 100%;
+  padding: 0px 5px;
+`;
+
+const SendButton = styled.button`
+  cursor: pointer;
+`;
+
 export default function SendMessage() {
   const { handleSubmit, register, setValue } = useForm<ISendMesssageData>();
-  const onSubmit: SubmitHandler<ISendMesssageData> = ({
-    nickname,
-    payload,
-  }) => {
+  const onSubmit: SubmitHandler<ISendMesssageData> = ({ author, payload }) => {
     const message = {
-      nickname,
+      author,
       payload,
+      createdAt: Date.now(),
     };
     addDoc(collection(db, "chat"), message);
-    setValue("nickname", "봉사자");
     setValue("payload", "");
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input
+    <SendMessageForm onSubmit={handleSubmit(onSubmit)}>
+      <AuthorInput
         type="text"
         placeholder="닉네임"
         defaultValue="봉사자"
-        {...register("nickname")}
+        {...register("author", { required: true })}
       />
-      <input type="text" placeholder="메세지" {...register("payload")} />
-      <input type="sumbit" value="보내기" />
-    </form>
+      <PayloadInput
+        type="text"
+        placeholder="메시지 보내기..."
+        {...register("payload", { required: true })}
+      />
+      <SendButton>
+        <FontAwesomeIcon icon={faPaperPlane} size="lg" />
+      </SendButton>
+    </SendMessageForm>
   );
 }

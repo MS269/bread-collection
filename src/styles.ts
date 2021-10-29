@@ -26,4 +26,7 @@ export const GlobalStyles = createGlobalStyle`
     input {
         all:unset;
     }
+    button{
+        all:unset;
+    }
 `;
