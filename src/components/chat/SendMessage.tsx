@@ -35,6 +35,7 @@ const PayloadInput = styled.input`
 const SendButton = styled.input`
   width: 65px;
   margin-right: 10px;
+  text-align: right;
   color: ${(props) => props.theme.blue};
   font-weight: 600;
   cursor: pointer;
