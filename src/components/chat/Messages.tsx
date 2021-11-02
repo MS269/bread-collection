@@ -7,6 +7,8 @@ import {
   orderBy,
   query,
 } from "@firebase/firestore";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { LoginContext } from "../../contexts/login";
@@ -61,6 +63,15 @@ export default function Messages() {
   const [messages, setMessages] = useState<DocumentData[]>([]);
   const deleteMessage = (id: string) => deleteDoc(doc(db, "chat", id));
 
+  const processDate = (date: number) => {
+    const time = new Date(date);
+    const meridiem = time.getHours() < 12 ? "오전" : "오후";
+    const hours = time.getHours() % 12;
+    const minutes = time.getMinutes();
+    const createdAt = `${meridiem} ${hours}:${minutes}`;
+    return createdAt;
+  };
+
   useEffect(() => {
     const unsubscribe = onSnapshot(
       query(collection(db, "chat"), orderBy("createdAt", "asc")),
@@ -77,12 +88,12 @@ export default function Messages() {
           <Author author={message.author}>{message.author}</Author>
           <Container author={message.author}>
             <Payload>{message.payload}</Payload>
-            <Time>{message.createdAt}</Time>
+            <Time>{processDate(message.createdAt)}</Time>
             <LoginContext.Consumer>
               {({ isLoggedIn }) =>
                 isLoggedIn ? (
                   <DeleteButton onClick={() => deleteMessage(message.id)}>
-                    ❌
+                    <FontAwesomeIcon icon={faTimesCircle} />
                   </DeleteButton>
                 ) : null
               }
