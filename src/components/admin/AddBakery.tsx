@@ -34,7 +34,7 @@ export default function AddBakery() {
     setValue("name", "");
     setValue("area", "");
     setValue("checkVisit", false);
-    setValue("visitDays", [false, false, false, false, false]);
+    setValue("visitDays", [true, true, true, true, true]);
     setValue("etc", "");
   };
 
