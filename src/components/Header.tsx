@@ -48,6 +48,11 @@ const Container = styled.div`
   justify-content: center;
 `;
 
+const Title = styled.span`
+  margin-top: 3px;
+  font-size: 12px;
+`;
+
 export default function Header() {
   const location = useLocation();
 
@@ -59,7 +64,7 @@ export default function Header() {
             <Link to={routes.home}>
               <Container>
                 <FontAwesomeIcon icon={faHome} size="2x" />
-                <span>홈</span>
+                <Title>홈</Title>
               </Container>
             </Link>
           </Icon>
@@ -69,7 +74,7 @@ export default function Header() {
             <Link to={routes.bakery}>
               <Container>
                 <FontAwesomeIcon icon={faBreadSlice} size="2x" />
-                <span>빵집</span>
+                <Title>빵집</Title>
               </Container>
             </Link>
           </Icon>
@@ -77,7 +82,7 @@ export default function Header() {
             <Link to={routes.chat}>
               <Container>
                 <FontAwesomeIcon icon={faPaperPlane} size="2x" />
-                <span>채팅</span>
+                <Title>채팅</Title>
               </Container>
             </Link>
           </Icon>
@@ -85,7 +90,7 @@ export default function Header() {
             <Link to={routes.manual}>
               <Container>
                 <FontAwesomeIcon icon={faStickyNote} size="2x" />
-                <span>설명서</span>
+                <Title>설명서</Title>
               </Container>
             </Link>
           </Icon>
@@ -102,7 +107,7 @@ export default function Header() {
                     />
                   )}
                 </LoginContext.Consumer>
-                <span>관리자</span>
+                <Title>관리자</Title>
               </Container>
             </Link>
           </Icon>
