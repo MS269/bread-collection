@@ -34,9 +34,9 @@ export default function Bakery() {
           <li key={bakery.id}>
             <span
               style={
-                bakery.needVisit
-                  ? {}
-                  : { opacity: 0.5, textDecoration: "line-through" }
+                bakery.visited
+                  ? { opacity: 0.5, textDecoration: "line-through" }
+                  : {}
               }
             >
               {bakery.area} - {bakery.name}

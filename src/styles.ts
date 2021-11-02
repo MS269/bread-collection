@@ -13,7 +13,7 @@ export const theme = {
 export const GlobalStyles = createGlobalStyle`
     ${reset}
     * {
-        box-sizing:border-box;
+        box-sizing: border-box;
     }
     body {
         background-color: ${(props) => props.theme.bgColor};
@@ -22,10 +22,10 @@ export const GlobalStyles = createGlobalStyle`
         font-size:14px;
     }
     a {
-        color:inherit;
+        color: inherit;
         text-decoration: none;
     }
     input {
-        all:unset;
+        all: unset;
     }
 `;
