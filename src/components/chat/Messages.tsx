@@ -47,6 +47,7 @@ const Payload = styled.div`
 `;
 
 const DeleteBtn = styled.div`
+  margin: 0px 2px;
   font-size: 10px;
   cursor: pointer;
 `;
