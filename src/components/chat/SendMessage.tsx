@@ -22,9 +22,7 @@ const SendMessageForm = styled.form`
 const AuthorInput = styled.input`
   width: 50px;
   height: 20px;
-  margin-left: 4px;
-  border: solid 1px ${(props) => props.theme.borderColor};
-  border-radius: 10px;
+  margin-left: 5px;
   text-align: center;
 `;
 
