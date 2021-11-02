@@ -45,10 +45,15 @@ const SendButton = styled.input`
 export default function SendMessage() {
   const { handleSubmit, register, setValue } = useForm<ISendMesssageData>();
   const onSubmit: SubmitHandler<ISendMesssageData> = ({ author, payload }) => {
+    const now = new Date();
+    const meridiem = now.getHours() < 12 ? "오전" : "오후";
+    const hours = now.getHours() % 12;
+    const minutes = now.getMinutes();
+    const createdAt = `${meridiem} ${hours}:${minutes}`;
     const message = {
       author,
       payload,
-      createdAt: Date.now(),
+      createdAt,
     };
     addDoc(collection(db, "chat"), message);
     setValue("payload", "");
