@@ -1,6 +1,7 @@
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import { ChatProvider } from "./contexts/chat";
 import { LoginContext, LoginProvider } from "./contexts/login";
 import routes from "./routes";
 import Admin from "./screens/Admin";
@@ -18,30 +19,32 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <LoginProvider>
-          <Router>
-            <Switch>
-              <Route path={routes.home} exact>
-                <Home />
-              </Route>
-              <Route path={routes.bakery} exact>
-                <Bakery />
-              </Route>
-              <Route path={routes.chat} exact>
-                <Chat />
-              </Route>
-              <Route path={routes.manual} exact>
-                <Manual />
-              </Route>
-              <Route path={routes.admin} exact>
-                <LoginContext.Consumer>
-                  {({ isLoggedIn }) => (
-                    <>{isLoggedIn ? <Admin /> : <Login />}</>
-                  )}
-                </LoginContext.Consumer>
-              </Route>
-              <NotFound />
-            </Switch>
-          </Router>
+          <ChatProvider>
+            <Router>
+              <Switch>
+                <Route path={routes.home} exact>
+                  <Home />
+                </Route>
+                <Route path={routes.bakery} exact>
+                  <Bakery />
+                </Route>
+                <Route path={routes.chat} exact>
+                  <Chat />
+                </Route>
+                <Route path={routes.manual} exact>
+                  <Manual />
+                </Route>
+                <Route path={routes.admin} exact>
+                  <LoginContext.Consumer>
+                    {({ isLoggedIn }) => (
+                      <>{isLoggedIn ? <Admin /> : <Login />}</>
+                    )}
+                  </LoginContext.Consumer>
+                </Route>
+                <NotFound />
+              </Switch>
+            </Router>
+          </ChatProvider>
         </LoginProvider>
       </ThemeProvider>
     </HelmetProvider>

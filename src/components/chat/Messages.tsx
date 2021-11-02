@@ -40,9 +40,9 @@ const Container = styled.div<{ author: string }>`
 `;
 
 const Payload = styled.div`
-  padding: 8px;
+  padding: 12px;
   margin: 0px 5px;
-  background-color: ${(props) => props.theme.borderColor};
+  background-color: ${(props) => props.theme.chatBgColor};
   border-radius: 22px;
 `;
 

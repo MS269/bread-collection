@@ -9,6 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { ChatContext } from "../contexts/chat";
 import { LoginContext } from "../contexts/login";
 import routes from "../routes";
 
@@ -53,6 +54,25 @@ const Title = styled.span`
   font-size: 12px;
 `;
 
+const NotiContainer = styled(Container)`
+  position: relative;
+`;
+
+const Noti = styled.div`
+  position: absolute;
+  top: -10px;
+  left: -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) => props.theme.red};
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  opacity: 1;
+  color: white;
+`;
+
 export default function Header() {
   const location = useLocation();
 
@@ -80,10 +100,13 @@ export default function Header() {
           </Icon>
           <Icon blur={location.pathname === routes.chat}>
             <Link to={routes.chat}>
-              <Container>
+              <NotiContainer>
                 <FontAwesomeIcon icon={faPaperPlane} size="2x" />
                 <Title>채팅</Title>
-              </Container>
+                <ChatContext.Consumer>
+                  {({ count }) => <Noti>{count}</Noti>}
+                </ChatContext.Consumer>
+              </NotiContainer>
             </Link>
           </Icon>
           <Icon blur={location.pathname === routes.manual}>

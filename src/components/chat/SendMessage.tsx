@@ -14,28 +14,25 @@ const SendMessageForm = styled.form`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 30px;
+  padding: 0px 11px 0px 11px;
   border: solid 1px ${(props) => props.theme.borderColor};
-  border-radius: 15px;
+  border-radius: 22px;
 `;
 
 const AuthorInput = styled.input`
-  width: 50px;
-  height: 20px;
-  margin-left: 5px;
-  text-align: center;
+  width: 40px;
+  text-align: left;
 `;
 
 const PayloadInput = styled.input`
   width: 100%;
-  margin: 0px 5px;
+  padding: 8px 9px;
 `;
 
 const SendButton = styled.input`
-  width: 65px;
-  margin-right: 10px;
-  text-align: right;
+  width: 70px;
   color: ${(props) => props.theme.blue};
+  text-align: right;
   font-weight: 600;
   cursor: pointer;
 `;
@@ -52,6 +49,7 @@ export default function SendMessage() {
       author,
       payload,
       createdAt,
+      read: false,
     };
     addDoc(collection(db, "chat"), message);
     setValue("payload", "");
@@ -71,7 +69,7 @@ export default function SendMessage() {
       </LoginContext.Consumer>
       <PayloadInput
         type="text"
-        placeholder="메시지 보내기..."
+        placeholder="메시지 입력..."
         {...register("payload", { required: true })}
       />
       <SendButton type="submit" value="보내기" />
