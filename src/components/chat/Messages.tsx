@@ -46,7 +46,7 @@ const Payload = styled.div`
   border-radius: 22px;
 `;
 
-const DeleteBtn = styled.div`
+const DeleteButton = styled.div`
   margin: 0px 2px;
   font-size: 10px;
   cursor: pointer;
@@ -81,9 +81,9 @@ export default function Messages() {
             <LoginContext.Consumer>
               {({ isLoggedIn }) =>
                 isLoggedIn ? (
-                  <DeleteBtn onClick={() => deleteMessage(message.id)}>
+                  <DeleteButton onClick={() => deleteMessage(message.id)}>
                     ❌
-                  </DeleteBtn>
+                  </DeleteButton>
                 ) : null
               }
             </LoginContext.Consumer>
