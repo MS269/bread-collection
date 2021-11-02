@@ -61,8 +61,7 @@ export default function SendMessage() {
           <AuthorInput
             type="text"
             placeholder="닉네임"
-            defaultValue={isLoggedIn ? "관리자" : "봉사자"}
-            disabled={!isLoggedIn}
+            value={isLoggedIn ? "관리자" : "봉사자"}
             {...register("author", { required: true })}
           />
         )}
