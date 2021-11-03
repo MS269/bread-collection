@@ -20,7 +20,7 @@ export default function App() {
         <GlobalStyles />
         <LoginProvider>
           <ChatProvider>
-            <Router basename={process.env.PUBLIC_URL}>
+            <Router>
               <Switch>
                 <Route component={Home} path={routes.home} exact />
                 <Route component={Bakery} path={routes.bakery} exact />

@@ -3,6 +3,8 @@ import {
   doc,
   DocumentData,
   onSnapshot,
+  orderBy,
+  query,
   updateDoc,
 } from "@firebase/firestore";
 import { useEffect, useState } from "react";
@@ -20,8 +22,10 @@ export default function Bakery() {
     updateDoc(doc(db, "bakeries", id), { needCert: !needCert });
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(collection(db, "bakeries"), (snapshot) =>
-      setBakeries(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    const unsubscribe = onSnapshot(
+      query(collection(db, "bakeries"), orderBy("area"), orderBy("visitOrder")),
+      (snapshot) =>
+        setBakeries(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     );
     return unsubscribe;
   }, []);
