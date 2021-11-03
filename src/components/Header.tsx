@@ -1,3 +1,4 @@
+import { collection, onSnapshot } from "@firebase/firestore";
 import {
   faBreadSlice,
   faHome,
@@ -7,10 +8,16 @@ import {
   faUnlock,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { ChatContext } from "../contexts/chat";
-import { LoginContext } from "../contexts/login";
+import {
+  isLoggedInState,
+  messageCountState,
+  readMessageCountState,
+} from "../atoms";
+import { db } from "../firebase";
 import routes from "../routes";
 
 const SHeader = styled.header`
@@ -76,6 +83,24 @@ const Noti = styled.div`
 export default function Header() {
   const location = useLocation();
 
+  const isLoggedIn = useRecoilValue(isLoggedInState);
+  const [messageCount, setMessageCount] = useRecoilState(messageCountState);
+  const [readMessageCount, setReadMessageCount] = useRecoilState(
+    readMessageCountState
+  );
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(collection(db, "chat"), (snapshot) => {
+      let count = 0;
+      snapshot.docs.map(() => count++);
+      if (location.pathname === routes.chat) {
+        setReadMessageCount(count);
+      }
+      setMessageCount(count - readMessageCount);
+    });
+    return unsubscribe;
+  });
+
   return (
     <SHeader>
       <Wrapper>
@@ -103,9 +128,7 @@ export default function Header() {
               <NotiContainer>
                 <FontAwesomeIcon icon={faPaperPlane} size="2x" />
                 <Title>채팅</Title>
-                <ChatContext.Consumer>
-                  {({ count }) => <Noti>{count}</Noti>}
-                </ChatContext.Consumer>
+                {messageCount > 0 ? <Noti>{messageCount}</Noti> : null}
               </NotiContainer>
             </Link>
           </Icon>
@@ -122,14 +145,10 @@ export default function Header() {
           <Icon blur={location.pathname === routes.admin}>
             <Link to={routes.admin}>
               <Container>
-                <LoginContext.Consumer>
-                  {({ isLoggedIn }) => (
-                    <FontAwesomeIcon
-                      icon={isLoggedIn ? faUnlock : faLock}
-                      size="2x"
-                    />
-                  )}
-                </LoginContext.Consumer>
+                <FontAwesomeIcon
+                  icon={isLoggedIn ? faUnlock : faLock}
+                  size="2x"
+                />
                 <Title>관리자</Title>
               </Container>
             </Link>

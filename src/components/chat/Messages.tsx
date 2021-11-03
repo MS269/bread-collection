@@ -10,8 +10,9 @@ import {
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { LoginContext } from "../../contexts/login";
+import { isLoggedInState } from "../../atoms";
 import { db } from "../../firebase";
 
 const MessageContainer = styled.ul`
@@ -63,6 +64,8 @@ export default function Messages() {
   const [messages, setMessages] = useState<DocumentData[]>([]);
   const deleteMessage = (id: string) => deleteDoc(doc(db, "chat", id));
 
+  const isLoggedIn = useRecoilValue(isLoggedInState);
+
   const processDate = (date: number) => {
     const time = new Date(date);
     const hours = time.getHours();
@@ -91,15 +94,11 @@ export default function Messages() {
           <Container author={message.author}>
             <Payload>{message.payload}</Payload>
             <Time>{processDate(message.createdAt)}</Time>
-            <LoginContext.Consumer>
-              {({ isLoggedIn }) =>
-                isLoggedIn ? (
-                  <DeleteButton onClick={() => deleteMessage(message.id)}>
-                    <FontAwesomeIcon icon={faTimesCircle} />
-                  </DeleteButton>
-                ) : null
-              }
-            </LoginContext.Consumer>
+            {isLoggedIn ? (
+              <DeleteButton onClick={() => deleteMessage(message.id)}>
+                <FontAwesomeIcon icon={faTimesCircle} />
+              </DeleteButton>
+            ) : null}
           </Container>
         </Message>
       ))}

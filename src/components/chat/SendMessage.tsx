@@ -1,7 +1,8 @@
 import { addDoc, collection } from "@firebase/firestore";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { LoginContext } from "../../contexts/login";
+import { isLoggedInState } from "../../atoms";
 import { db } from "../../firebase";
 
 interface ISendMesssageData {
@@ -49,18 +50,16 @@ export default function SendMessage() {
     setValue("payload", "");
   };
 
+  const isLoggedIn = useRecoilValue(isLoggedInState);
+
   return (
     <SendMessageForm onSubmit={handleSubmit(onSubmit)}>
-      <LoginContext.Consumer>
-        {({ isLoggedIn }) => (
-          <AuthorInput
-            type="text"
-            placeholder="닉네임"
-            defaultValue={isLoggedIn ? "관리자" : "봉사자"}
-            {...register("author", { required: true })}
-          />
-        )}
-      </LoginContext.Consumer>
+      <AuthorInput
+        type="text"
+        placeholder="닉네임"
+        defaultValue={isLoggedIn ? "관리자" : "봉사자"}
+        {...register("author", { required: true })}
+      />
       <PayloadInput
         type="text"
         placeholder="메시지 입력..."

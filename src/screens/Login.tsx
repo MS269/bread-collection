@@ -1,9 +1,10 @@
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
+import { isLoggedInState } from "../atoms";
 import Layout from "../components/Layout";
-import { LoginContext } from "../contexts/login";
 
-const PASSWORD: string = process.env.REACT_APP_ADMIN_PASSWORD;
+const PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD;
 
 interface ILoginData {
   password: string;
@@ -32,32 +33,25 @@ const SubmitButton = styled.input`
 `;
 
 export default function Login() {
-  const { handleSubmit, register } = useForm<ILoginData>({
-    mode: "onChange",
-  });
+  const { handleSubmit, register } = useForm<ILoginData>();
+  const onSubmit: SubmitHandler<ILoginData> = ({ password }) => {
+    if (password === PASSWORD) {
+      login(true);
+    }
+  };
+
+  const login = useSetRecoilState(isLoggedInState);
 
   return (
     <Layout>
-      <LoginContext.Consumer>
-        {({ login }) => {
-          const onSubmit: SubmitHandler<ILoginData> = ({ password }) => {
-            if (password === PASSWORD) {
-              login();
-            }
-          };
-
-          return (
-            <LoginForm onSubmit={handleSubmit(onSubmit)}>
-              <PasswordInput
-                type="password"
-                placeholder="비밀번호를 입력해주세요."
-                {...register("password", { required: true })}
-              />
-              <SubmitButton type="submit" value="로그인" />
-            </LoginForm>
-          );
-        }}
-      </LoginContext.Consumer>
+      <LoginForm onSubmit={handleSubmit(onSubmit)}>
+        <PasswordInput
+          type="password"
+          placeholder="비밀번호를 입력해주세요."
+          {...register("password", { required: true })}
+        />
+        <SubmitButton type="submit" value="로그인" />
+      </LoginForm>
     </Layout>
   );
 }

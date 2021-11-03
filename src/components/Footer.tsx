@@ -39,9 +39,9 @@ const Dday = styled.div`
 `;
 
 export default function Footer() {
-  const dischargeDay: Date = new Date(2022, 10, 17);
-  const today: Date = new Date();
-  const dDay: number =
+  const dischargeDay = new Date(2022, 10, 17);
+  const today = new Date();
+  const dDay =
     Math.floor(
       (dischargeDay.getTime() - today.getTime()) / 1000 / 60 / 60 / 24
     ) + 1;
