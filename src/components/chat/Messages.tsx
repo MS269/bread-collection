@@ -65,10 +65,12 @@ export default function Messages() {
 
   const processDate = (date: number) => {
     const time = new Date(date);
-    const meridiem = time.getHours() < 12 ? "오전" : "오후";
-    const hours = time.getHours() % 12;
+    const hours = time.getHours();
     const minutes = time.getMinutes();
-    const createdAt = `${meridiem} ${hours}:${minutes}`;
+    const meridiem = hours < 12 ? "오전" : "오후";
+    const createdAt = `${meridiem} ${hours % 12}:${
+      minutes < 10 ? `0${minutes}` : minutes
+    }`;
     return createdAt;
   };
 
