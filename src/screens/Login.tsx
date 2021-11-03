@@ -3,6 +3,7 @@ import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { isLoggedInState } from "../atoms";
 import Layout from "../components/Layout";
+import { hasErrorInput } from "../components/sharedStyles";
 
 const PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD;
 
@@ -24,16 +25,17 @@ const PasswordInput = styled.input`
   border-radius: 4px;
 `;
 
-const SubmitButton = styled.input`
+const SubmitButton = styled(hasErrorInput)`
   background-color: ${(props) => props.theme.blue};
   padding: 11px;
   border-radius: 4px;
   color: white;
-  cursor: pointer;
 `;
 
 export default function Login() {
-  const { handleSubmit, register } = useForm<ILoginData>();
+  const { handleSubmit, register, formState } = useForm<ILoginData>({
+    mode: "onChange",
+  });
   const onSubmit: SubmitHandler<ILoginData> = ({ password }) => {
     if (password === PASSWORD) {
       login(true);
@@ -50,7 +52,11 @@ export default function Login() {
           placeholder="비밀번호를 입력해주세요."
           {...register("password", { required: true })}
         />
-        <SubmitButton type="submit" value="로그인" />
+        <SubmitButton
+          type="submit"
+          value="로그인"
+          hasError={!formState.isValid}
+        />
       </LoginForm>
     </Layout>
   );

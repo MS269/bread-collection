@@ -4,6 +4,7 @@ import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { isLoggedInState } from "../../atoms";
 import { db } from "../../firebase";
+import { hasErrorInput } from "../sharedStyles";
 
 interface ISendMesssageData {
   author: string;
@@ -30,16 +31,16 @@ const PayloadInput = styled.input`
   padding: 8px 9px;
 `;
 
-const SendButton = styled.input`
+const SendButton = styled(hasErrorInput)`
   width: 70px;
   color: ${(props) => props.theme.blue};
   text-align: right;
   font-weight: 600;
-  cursor: pointer;
 `;
 
 export default function SendMessage() {
-  const { handleSubmit, register, setValue } = useForm<ISendMesssageData>();
+  const { handleSubmit, register, setValue, formState } =
+    useForm<ISendMesssageData>({ mode: "onChange" });
   const onSubmit: SubmitHandler<ISendMesssageData> = ({ author, payload }) => {
     const message = {
       author,
@@ -65,7 +66,7 @@ export default function SendMessage() {
         placeholder="메시지 입력..."
         {...register("payload", { required: true })}
       />
-      <SendButton type="submit" value="보내기" />
+      <SendButton type="submit" value="보내기" hasError={!formState.isValid} />
     </SendMessageForm>
   );
 }
