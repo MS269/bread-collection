@@ -27,7 +27,6 @@ export default function AddBakery() {
       etc,
       visitOrder: 0,
       needVisit: false,
-      needCert: false,
       visited: false,
     };
     addDoc(collection(db, "bakeries"), bakery);

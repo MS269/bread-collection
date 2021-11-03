@@ -18,9 +18,6 @@ export default function Bakery() {
   const switchVisit = (id: string, visited: boolean) =>
     updateDoc(doc(db, "bakeries", id), { visited: !visited });
 
-  const switchNeedCert = (id: string, needCert: boolean) =>
-    updateDoc(doc(db, "bakeries", id), { needCert: !needCert });
-
   useEffect(() => {
     const unsubscribe = onSnapshot(
       query(collection(db, "bakeries"), orderBy("area"), orderBy("visitOrder")),
@@ -47,9 +44,6 @@ export default function Bakery() {
             </span>
             <button onClick={() => switchVisit(bakery.id, bakery.visited)}>
               방문{bakery.visited ? "⭕" : "❌"}
-            </button>
-            <button onClick={() => switchNeedCert(bakery.id, bakery.needCert)}>
-              인수확인증필요{bakery.needCert ? "⭕" : "❌"}
             </button>
           </li>
         ))}
