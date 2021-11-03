@@ -22,25 +22,19 @@ export default function App() {
           <ChatProvider>
             <Router basename={process.env.PUBLIC_URL}>
               <Switch>
-                <Route path={routes.home} exact>
-                  <Home />
-                </Route>
-                <Route path={routes.bakery} exact>
-                  <Bakery />
-                </Route>
-                <Route path={routes.chat} exact>
-                  <Chat />
-                </Route>
-                <Route path={routes.manual} exact>
-                  <Manual />
-                </Route>
-                <Route path={routes.admin} exact>
-                  <LoginContext.Consumer>
-                    {({ isLoggedIn }) => (
-                      <>{isLoggedIn ? <Admin /> : <Login />}</>
-                    )}
-                  </LoginContext.Consumer>
-                </Route>
+                <Route component={Home} path={routes.home} exact />
+                <Route component={Bakery} path={routes.bakery} exact />
+                <Route component={Chat} path={routes.chat} exact />
+                <Route component={Manual} path={routes.manual} exact />
+                <LoginContext.Consumer>
+                  {({ isLoggedIn }) => (
+                    <Route
+                      component={isLoggedIn ? Admin : Login}
+                      path={routes.admin}
+                      exact
+                    />
+                  )}
+                </LoginContext.Consumer>
                 <NotFound />
               </Switch>
             </Router>
