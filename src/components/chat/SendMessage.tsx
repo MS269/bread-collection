@@ -44,7 +44,6 @@ export default function SendMessage() {
       author,
       payload,
       createdAt: Date.now(),
-      read: false,
     };
     addDoc(collection(db, "chat"), message);
     setValue("payload", "");
