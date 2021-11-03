@@ -27,6 +27,7 @@ export default function Home() {
       query(
         collection(db, "bakeries"),
         where("checkVisit", "==", true),
+        orderBy("area"),
         orderBy("visitOrder")
       ),
       (snapshot) =>
