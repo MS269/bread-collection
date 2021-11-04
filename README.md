@@ -26,6 +26,7 @@ Web site for managing bread collection
 
 - [ ] Show visitOrNot and etc if exist
 - [ ] Blur bakery based on visitDay and then visitOrNot
+- [ ] Add navigation to areas
 - [ ] Connect with map API
 
 ## Manual
@@ -35,4 +36,10 @@ Web site for managing bread collection
 
 ## Chat
 
-- [x] Perfect
+- [ ] Fix sendMessage bar
+- [ ] Infinity scroll
+
+## Etc
+
+- [ ] Loading page
+- [ ] Clean code
