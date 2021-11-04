@@ -138,7 +138,7 @@ export default function Header() {
             <Link to={routes.manual}>
               <Container>
                 <FontAwesomeIcon icon={faStickyNote} size="2x" />
-                <Title>설명서</Title>
+                <Title>사용법</Title>
               </Container>
             </Link>
           </Icon>
