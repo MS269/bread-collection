@@ -39,6 +39,8 @@ const SendButton = styled(HasErrorInput)`
 `;
 
 export default function SendMessage() {
+  const isLoggedIn = useRecoilValue(isLoggedInState);
+
   const { handleSubmit, register, setValue, formState } =
     useForm<ISendMesssageData>({ mode: "onChange" });
   const onSubmit: SubmitHandler<ISendMesssageData> = ({ author, payload }) => {
@@ -51,8 +53,6 @@ export default function SendMessage() {
     setDoc(doc(db, "chat", String(createdAt)), message);
     setValue("payload", "");
   };
-
-  const isLoggedIn = useRecoilValue(isLoggedInState);
 
   return (
     <SendMessageForm onSubmit={handleSubmit(onSubmit)}>

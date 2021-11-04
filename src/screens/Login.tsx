@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { isLoggedInState, passwordState } from "../atoms";
 import Layout from "../components/Layout";
 import PageTitle from "../components/PageTitle";
-import { HasErrorInput } from "../components/sharedStyles";
+import { HasErrorInput, Input } from "../components/sharedStyles";
 
 interface ILoginData {
   password: string;
@@ -17,11 +17,8 @@ const LoginForm = styled.form`
   margin: 24px 0px;
 `;
 
-const PasswordInput = styled.input`
+const PasswordInput = styled(Input)`
   margin-right: 10px;
-  padding: 8px;
-  border: solid 1px ${(props) => props.theme.borderColor};
-  border-radius: 4px;
 `;
 
 const SubmitButton = styled(HasErrorInput)`

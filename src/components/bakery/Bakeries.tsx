@@ -1,6 +1,7 @@
 import { doc, DocumentData, updateDoc } from "@firebase/firestore";
 import styled from "styled-components";
 import { db } from "../../firebase";
+import { Visited } from "../sharedStyles";
 
 interface BakeriesProps {
   bakeries: DocumentData[];
@@ -18,9 +19,14 @@ const Bakery = styled.ul`
   cursor: pointer;
 `;
 
-const Name = styled.span<{ visited: boolean }>`
-  text-decoration: ${(props) => (props.visited ? "line-through" : "inherit")};
-  opacity: ${(props) => (props.visited ? "0.5" : "1")};
+const Name = styled(Visited)``;
+
+// const VisitOrNot = styled(Visited)`
+// margin-top: 5px;
+// `;
+
+const Etc = styled(Visited)`
+  margin-top: 5px;
 `;
 
 export default function Bakeries({ bakeries }: BakeriesProps) {
@@ -35,6 +41,12 @@ export default function Bakeries({ bakeries }: BakeriesProps) {
           onClick={() => switchVisit(bakery.id, bakery.visited)}
         >
           <Name visited={bakery.visited}>{bakery.name}</Name>
+          {/* {bakery.visitOrNot !== "" ? (
+            <VisitOrNot>{bakery.visitOrNot}</VisitOrNot>
+          ) : null} */}
+          {bakery.etc ? (
+            <Etc visited={bakery.visited}>비고: {bakery.etc}</Etc>
+          ) : null}
         </Bakery>
       ))}
     </BakeryContainer>

@@ -30,4 +30,7 @@ export const GlobalStyles = createGlobalStyle`
     input {
         all: unset;
     }
+    input[type="checkbox"] {
+        appearance: auto;
+    }
 `;

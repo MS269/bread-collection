@@ -1,12 +1,18 @@
 import AddBakery from "../components/admin/AddBakery";
-import Layout from "../components/Layout";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import PageTitle from "../components/PageTitle";
+import { Main } from "../components/sharedStyles";
 
 export default function Admin() {
   return (
-    <Layout>
+    <>
       <PageTitle title={"관리자"} />
-      <AddBakery />
-    </Layout>
+      <Header />
+      <Main>
+        <AddBakery />
+      </Main>
+      <Footer />
+    </>
   );
 }
