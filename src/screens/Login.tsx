@@ -1,12 +1,10 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { isLoggedInState } from "../atoms";
+import { isLoggedInState, passwordState } from "../atoms";
 import Layout from "../components/Layout";
 import PageTitle from "../components/PageTitle";
 import { HasErrorInput } from "../components/sharedStyles";
-
-const PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD;
 
 interface ILoginData {
   password: string;
@@ -34,16 +32,17 @@ const SubmitButton = styled(HasErrorInput)`
 `;
 
 export default function Login() {
+  const pwd = useRecoilValue(passwordState);
+  const login = useSetRecoilState(isLoggedInState);
+
   const { handleSubmit, register, formState } = useForm<ILoginData>({
     mode: "onChange",
   });
   const onSubmit: SubmitHandler<ILoginData> = ({ password }) => {
-    if (password === PASSWORD) {
+    if (password === pwd) {
       login(true);
     }
   };
-
-  const login = useSetRecoilState(isLoggedInState);
 
   return (
     <Layout>

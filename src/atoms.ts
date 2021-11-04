@@ -1,5 +1,10 @@
 import { atom } from "recoil";
 
+export const passwordState = atom({
+  key: "passwordState",
+  default: process.env.REACT_APP_ADMIN_PASSWORD,
+});
+
 export const isLoggedInState = atom({
   key: "isLoggedInState",
   default: false,
