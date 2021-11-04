@@ -13,8 +13,9 @@ Web site for managing bread collection
 ## Admin
 
 - [ ] Style AddBakery
-- [ ] Show checkVisit bakery only and Notify needVisit bakery
-- [ ] Initialize visited and needVisit
+- [ ] Show all bakeries and Notify visitOrNot
+- [ ] Modify the visitOrder with drag
+- [ ] Initialize visited and visitOrNot
 - [ ] Initialize all chat
 
 ## Home
@@ -23,7 +24,8 @@ Web site for managing bread collection
 
 ## Bakery
 
-- [ ] Blur bakery based on needVisit and visitDay
+- [ ] Show visitOrNot and etc if exist
+- [ ] Blur bakery based on visitDay and then visitOrNot
 - [ ] Connect with map API
 
 ## Manual
