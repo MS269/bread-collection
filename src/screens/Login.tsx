@@ -3,6 +3,7 @@ import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { isLoggedInState } from "../atoms";
 import Layout from "../components/Layout";
+import PageTitle from "../components/PageTitle";
 import { hasErrorInput } from "../components/sharedStyles";
 
 const PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD;
@@ -46,6 +47,7 @@ export default function Login() {
 
   return (
     <Layout>
+      <PageTitle title={"로그인"} />
       <LoginForm onSubmit={handleSubmit(onSubmit)}>
         <PasswordInput
           type="password"
