@@ -1,4 +1,4 @@
-import { addDoc, collection } from "@firebase/firestore";
+import { doc, setDoc } from "@firebase/firestore";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { db } from "../../firebase";
 
@@ -29,7 +29,7 @@ export default function AddBakery() {
       needVisit: false,
       visited: false,
     };
-    addDoc(collection(db, "bakeries"), bakery);
+    setDoc(doc(db, "bakeries", name), bakery);
     setValue("name", "");
     setValue("area", "");
     setValue("checkVisit", false);
