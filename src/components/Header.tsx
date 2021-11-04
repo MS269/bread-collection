@@ -128,7 +128,9 @@ export default function Header() {
               <NotiContainer>
                 <FontAwesomeIcon icon={faPaperPlane} size="2x" />
                 <Title>채팅</Title>
-                {messageCount > 0 ? <Noti>{messageCount}</Noti> : null}
+                {location.pathname !== routes.chat && messageCount > 0 ? (
+                  <Noti>{messageCount}</Noti>
+                ) : null}
               </NotiContainer>
             </Link>
           </Icon>
