@@ -1,22 +1,35 @@
 import {
   collection,
-  doc,
   DocumentData,
   onSnapshot,
   orderBy,
   query,
-  updateDoc,
 } from "@firebase/firestore";
 import { useEffect, useState } from "react";
-import Layout from "../components/Layout";
+import styled from "styled-components";
+import Area from "../components/bakery/Area";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import PageTitle from "../components/PageTitle";
 import { db } from "../firebase";
 
+const Wrapper = styled.main``;
+
+const AreaWrapper = styled.ul`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+`;
+
+const AreaContainer = styled.li``;
+
+const WhiteSpace = styled.div`
+  height: 30px;
+`;
+
 export default function Bakery() {
   const [bakeries, setBakeries] = useState<DocumentData[]>([]);
-
-  const switchVisit = (id: string, visited: boolean) =>
-    updateDoc(doc(db, "bakeries", id), { visited: !visited });
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -28,26 +41,61 @@ export default function Bakery() {
   }, []);
 
   return (
-    <Layout>
+    <Wrapper>
       <PageTitle title={"빵집"} />
-      <ul>
-        {bakeries.map((bakery) => (
-          <li key={bakery.id}>
-            <span
-              style={
-                bakery.visited
-                  ? { opacity: 0.5, textDecoration: "line-through" }
-                  : {}
-              }
-            >
-              {bakery.area} - {bakery.name}
-            </span>
-            <button onClick={() => switchVisit(bakery.id, bakery.visited)}>
-              방문{bakery.visited ? "⭕" : "❌"}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </Layout>
+      <Header />
+      <AreaWrapper>
+        <AreaContainer>
+          <Area
+            area={"걸포동"}
+            bakeries={bakeries.filter((bakery) => bakery.area === "걸포동")}
+          />
+        </AreaContainer>
+        <AreaContainer>
+          <Area
+            area={"사우동"}
+            bakeries={bakeries.filter((bakery) => bakery.area === "사우동")}
+          />
+        </AreaContainer>
+        <AreaContainer>
+          <Area
+            area={"풍무동"}
+            bakeries={bakeries.filter((bakery) => bakery.area === "풍무동")}
+          />
+        </AreaContainer>
+        <AreaContainer>
+          <Area
+            area={"고촌읍"}
+            bakeries={bakeries.filter((bakery) => bakery.area === "고촌읍")}
+          />
+        </AreaContainer>
+        <AreaContainer>
+          <Area
+            area={"운양동"}
+            bakeries={bakeries.filter((bakery) => bakery.area === "운양동")}
+          />
+        </AreaContainer>
+        <AreaContainer>
+          <Area
+            area={"장기동"}
+            bakeries={bakeries.filter((bakery) => bakery.area === "장기동")}
+          />
+        </AreaContainer>
+        <AreaContainer>
+          <Area
+            area={"마산동"}
+            bakeries={bakeries.filter((bakery) => bakery.area === "마산동")}
+          />
+        </AreaContainer>
+        <AreaContainer>
+          <Area
+            area={"구래동"}
+            bakeries={bakeries.filter((bakery) => bakery.area === "구래동")}
+          />
+        </AreaContainer>
+      </AreaWrapper>
+      <WhiteSpace />
+      <Footer />
+    </Wrapper>
   );
 }
