@@ -1,6 +1,6 @@
 # Bread Collection
 
-This web helps to collect bread
+Web site for managing bread collection
 
 ## Routes
 
