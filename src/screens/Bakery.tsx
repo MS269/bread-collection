@@ -20,13 +20,10 @@ const AreaWrapper = styled.ul`
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  margin: 6px 0px 30px 0px;
 `;
 
 const AreaContainer = styled.li``;
-
-const WhiteSpace = styled.div`
-  height: 30px;
-`;
 
 export default function Bakery() {
   const [bakeries, setBakeries] = useState<DocumentData[]>([]);
@@ -94,7 +91,6 @@ export default function Bakery() {
           />
         </AreaContainer>
       </AreaWrapper>
-      <WhiteSpace />
       <Footer />
     </Wrapper>
   );
