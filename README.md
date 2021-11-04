@@ -12,26 +12,19 @@ This web helps to collect bread
 
 ## Admin
 
-- [x] Login with simple password
-- [ ] Show checkVisit bakery only
-- [ ] Notify needVisit bakery
-- [ ] Show needCert bakery only
-- [ ] Initialize visited, needVisit and needCert
-- [ ] Show visited bakery only
-- [ ] Initialize all chats
+- [ ] Style AddBakery
+- [ ] Show checkVisit bakery only and Notify needVisit bakery
+- [ ] Initialize visited and needVisit
+- [ ] Initialize all chat
 
 ## Home
 
-- [x] Show checkVisit bakery only
-- [x] Blur no needVisit bakery
+- [ ] Divide accroding to area
 
 ## Bakery
 
-- [x] Show all bakery list
-- [x] Blur no needVisit bakery
-- [x] Notify needCert bakery
-- [x] Notify visited bakery
-- [ ] Show where to visit next based on previous visited bakery
+- [ ] Blur bakery based on needVisit and visitDay
+- [ ] Connect with map API
 
 ## Manual
 
@@ -40,4 +33,4 @@ This web helps to collect bread
 
 ## Chat
 
-- [x] Chat with nickname
+- [x] Perfect
