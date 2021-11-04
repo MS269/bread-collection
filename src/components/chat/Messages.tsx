@@ -47,6 +47,7 @@ const Payload = styled.div`
   margin: 0px 5px;
   background-color: ${(props) => props.theme.chatBgColor};
   border-radius: 22px;
+  text-align: justify;
 `;
 
 const DeleteButton = styled.div`
