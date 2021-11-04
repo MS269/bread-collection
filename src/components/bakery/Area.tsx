@@ -11,7 +11,6 @@ interface AreaProps {
 const SArea = styled.h3`
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 10px;
 `;
 
 export default function Area({ area, bakeries }: AreaProps) {
