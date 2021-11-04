@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { isLoggedInState } from "../atoms";
 import Layout from "../components/Layout";
 import PageTitle from "../components/PageTitle";
-import { hasErrorInput } from "../components/sharedStyles";
+import { HasErrorInput } from "../components/sharedStyles";
 
 const PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD;
 
@@ -26,7 +26,7 @@ const PasswordInput = styled.input`
   border-radius: 4px;
 `;
 
-const SubmitButton = styled(hasErrorInput)`
+const SubmitButton = styled(HasErrorInput)`
   background-color: ${(props) => props.theme.blue};
   padding: 11px;
   border-radius: 4px;

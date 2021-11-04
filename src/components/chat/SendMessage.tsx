@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { isLoggedInState } from "../../atoms";
 import { db } from "../../firebase";
-import { hasErrorInput } from "../sharedStyles";
+import { HasErrorInput } from "../sharedStyles";
 
 interface ISendMesssageData {
   author: string;
@@ -31,7 +31,7 @@ const PayloadInput = styled.input`
   padding: 8px 9px;
 `;
 
-const SendButton = styled(hasErrorInput)`
+const SendButton = styled(HasErrorInput)`
   width: 70px;
   color: ${(props) => props.theme.blue};
   text-align: right;
