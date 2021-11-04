@@ -1,4 +1,4 @@
-import { addDoc, collection } from "@firebase/firestore";
+import { doc, setDoc } from "@firebase/firestore";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
@@ -42,12 +42,13 @@ export default function SendMessage() {
   const { handleSubmit, register, setValue, formState } =
     useForm<ISendMesssageData>({ mode: "onChange" });
   const onSubmit: SubmitHandler<ISendMesssageData> = ({ author, payload }) => {
+    const createdAt = Date.now();
     const message = {
       author,
       payload,
-      createdAt: Date.now(),
+      createdAt,
     };
-    addDoc(collection(db, "chat"), message);
+    setDoc(doc(db, "chat", String(createdAt)), message);
     setValue("payload", "");
   };
 
