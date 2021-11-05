@@ -88,7 +88,6 @@ export default function AddBakery() {
       etc,
       visitOrNot: "",
       visitOrder: 0,
-      needVisit: false,
       visited: false,
     };
     setDoc(doc(db, "bakeries", name), bakery);
