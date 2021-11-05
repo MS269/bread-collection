@@ -11,7 +11,7 @@ const BakeryContainer = styled.ul``;
 
 const Bakery = styled.ul`
   padding: 12px;
-  margin: 15px 0px;
+  margin: 15px 0px 0px 0px;
   background-color: ${(props) => props.theme.chatBgColor};
   border-radius: 22px;
   box-shadow: ${(props) => props.theme.shadow};
