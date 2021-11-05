@@ -57,6 +57,10 @@ const VisitDayCheckbox = styled.input`
   margin: 0px 3px 0px 0px;
 `;
 
+const VisitDayLabel = styled.label`
+  cursor: pointer;
+`;
+
 const EtcInput = styled(Input)`
   margin: 0px 0px 10px 0px;
 `;
@@ -123,7 +127,7 @@ export default function AddBakery() {
               defaultChecked={true}
               {...register("visitDays.0")}
             />
-            <label htmlFor="mon">월요일</label>
+            <VisitDayLabel htmlFor="mon">월요일</VisitDayLabel>
           </VisitDayContainer>
           <VisitDayContainer>
             <VisitDayCheckbox
@@ -132,7 +136,7 @@ export default function AddBakery() {
               defaultChecked={true}
               {...register("visitDays.1")}
             />
-            <label htmlFor="tue">화요일</label>
+            <VisitDayLabel htmlFor="tue">화요일</VisitDayLabel>
           </VisitDayContainer>
           <VisitDayContainer>
             <VisitDayCheckbox
@@ -141,7 +145,7 @@ export default function AddBakery() {
               defaultChecked={true}
               {...register("visitDays.2")}
             />
-            <label htmlFor="wed">수요일</label>
+            <VisitDayLabel htmlFor="wed">수요일</VisitDayLabel>
           </VisitDayContainer>
           <VisitDayContainer>
             <VisitDayCheckbox
@@ -150,7 +154,7 @@ export default function AddBakery() {
               defaultChecked={true}
               {...register("visitDays.3")}
             />
-            <label htmlFor="thu">목요일</label>
+            <VisitDayLabel htmlFor="thu">목요일</VisitDayLabel>
           </VisitDayContainer>
           <VisitDayContainer>
             <VisitDayCheckbox
@@ -159,7 +163,7 @@ export default function AddBakery() {
               defaultChecked={true}
               {...register("visitDays.4")}
             />
-            <label htmlFor="fri">금요일</label>
+            <VisitDayLabel htmlFor="fri">금요일</VisitDayLabel>
           </VisitDayContainer>
         </VisitDayWrapper>
         <EtcInput type="text" placeholder="추가사항" {...register("etc")} />
