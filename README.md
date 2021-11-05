@@ -12,7 +12,7 @@ Web site for managing bread collection
 
 ## Admin
 
-- [ ] Style AddBakery
+- [ ] Style AddBakery select(mobile) and checkbox(mobile)
 - [ ] Show all bakeries and Notify visitOrNot
 - [ ] Modify the visitOrder with drag
 - [ ] Initialize visited and visitOrNot
@@ -42,4 +42,6 @@ Web site for managing bread collection
 ## Etc
 
 - [ ] Loading page
+- [ ] 404 page
+- [ ] Favicon
 - [ ] Clean code
