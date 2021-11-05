@@ -21,7 +21,7 @@ const Bakery = styled.ul`
 
 const Name = styled(Visited)``;
 
-// const VisitOrNot = styled(Visited)`
+// const CheckVisit = styled(Visited)`
 // margin-top: 5px;
 // `;
 
@@ -41,8 +41,8 @@ export default function Bakeries({ bakeries }: BakeriesProps) {
           onClick={() => switchVisit(bakery.id, bakery.visited)}
         >
           <Name visited={bakery.visited}>{bakery.name}</Name>
-          {/* {bakery.visitOrNot !== "" ? (
-            <VisitOrNot>{bakery.visitOrNot}</VisitOrNot>
+          {/* {bakery.checkVisit !== "" ? (
+            <CheckVisit>{bakery.checkVisit}</CheckVisit>
           ) : null} */}
           {bakery.etc ? (
             <Etc visited={bakery.visited}>비고: {bakery.etc}</Etc>

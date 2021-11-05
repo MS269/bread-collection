@@ -86,7 +86,7 @@ export default function AddBakery() {
       area,
       visitDays,
       etc,
-      visitOrNot: "",
+      visitCheck: "",
       visitOrder: 0,
       visited: false,
     };
