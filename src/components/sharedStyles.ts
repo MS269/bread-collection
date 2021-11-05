@@ -8,7 +8,7 @@ export const Container = styled.div`
   background-color: white;
   max-width: 935px;
   width: 100%;
-  margin: 24px auto 0px auto;
+  margin: 30px auto 0px auto;
   padding: 16px;
   border: solid 1px ${(props) => props.theme.borderColor};
 `;
@@ -26,7 +26,6 @@ export const Input = styled.input`
 
 export const Main = styled.main`
   width: 100%;
-  margin: 6px 0px 30px 0px;
 `;
 
 export const Title = styled.h3`
